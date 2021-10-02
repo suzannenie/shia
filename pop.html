@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Noto+Sans+Display&family=Oswald&family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
+    <script>
+        //Qoutes is a list of graphic-text pairs
+        let quotes = [
+           {"text":"Call your mom", "img":"https://media.makeameme.org/created/call-your-mother-3xtdyu.jpg"},
+            {"text":"Drink some water", "img":"https://pics.me.me/it-is-real-hydration-hours-my-dudes-remember-to-drink-34603517.png"},
+            {"text":"Take a break sometimes", "img":"https://th.bing.com/th/id/R.22834b3807c65d4bcdd1495872b5fa6a?rik=%2b3L5PKg3YY2p5g&pid=ImgRaw&r=0"},
+            {"text":"You've been studying for a while, still there?", "img":"https://res.cloudinary.com/teepublic/image/private/s--hm6N8nTJ--/t_Preview/b_rgb:191919,c_lpad,f_jpg,h_630,q_90,w_1200/v1548012199/production/designs/4043904_0.jpg"},
+
+        ]
+        let fonts = ['Ephesis', 'Noto Sans Display', 'Oswald', 'Roboto Mono'];
+        let bkg = ["#9FB4C7","#9CC4B2","#E4572E","#F3A712","#A8C686"]
+
+        function rng(max)
+        {
+            return Math.floor(Math.random() * max);
+        }
+
+        function randElem(array)
+        {
+            let i = rng(array.length);
+            return array[i];
+        }
+
+        function getQuote(){
+            // let q = rng(length(quotes));
+            // return quotes[q];
+            return randElem(quotes);
+        }
+
+        function getFont(){
+            return randElem(fonts);
+        }
+
+        function getBgndColor()
+        {
+            return randElem(bkg);
+        }
+
+        function updatePopup()
+        {
+            let quote = getQuote();
+            console.log(quote['img']);
+            if(quote['img'] == undefined)
+            {
+                $('#text').text(quote['text']);
+                $('#text').css("grid-row-start", 1);
+            } else {
+                $('#meme').attr('src',quote['img']);
+                $('#text').text(quote['text']);
+                $('#text').css("grid-row-start", 3);
+            
+            }
+            $('#text').css("font-family",getFont());
+            $('body').css("background-color",getBgndColor());
+        }
+
+        async function createNotif(q)
+        {
+            if (Notification.permission === 'granted')
+            {
+                let notif = new Notification(
+                    q['text'],
+                    {
+                    'icon':q['image']
+                    }
+                );
+
+                setTimeout(() => notif.close(), 3 * 1000); //3 Seconds
+            } else {
+                let perms = await Notification.requestPermission();
+            }
+            
+        }
+
+        $(document).ready(function()
+        {
+            updatePopup();
+        })
+    </script>
+    <style>
+        img {
+            border-radius: 10px;
+            height: 50vh;
+            align-content: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+        }
+
+        #pop {
+            display: grid;
+            grid-template-rows: auto 8vh auto;
+        }
+
+        #text {
+            font-size: 6.5vh;
+            text-align: center;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="pop">
+        <img id="meme">
+        <h2 id="text"></h2>
+    </div>
+
+    
+    
+</body>
+</html>
