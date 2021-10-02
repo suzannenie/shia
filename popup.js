@@ -48,26 +48,34 @@ function buttonClicked() {
     disabled = !disabled;
 }
 
-let sec = 0;
-let min = 0;
-let hr = 0;
-function webTimer() 
+function localTimeIfAvail(name)
 {
-    sec = sec + 1;
-    if (sec == 60)
+    if (localStorage.getItem(name) != null)
     {
-        min = min + 1;
-        sec = 0;
+        return localStorage.getItem(name);
     }
+    return 0;
+}
 
-    if (min == 60)
-    {
-        hr = hr + 1;
-        min = 0;
-    }
 
+function resetTimer()
+{
+    sec = 0;
+    min = 0;
+    hr = 0;
+
+    localStorage.setItem("hr", hr);
+    localStorage.setItem("min",min);
+    localStorage.setItem("sec",sec);
     
-    
+}
+
+function genTimeText()
+{
+    let sec = localTimeIfAvail("sec");
+    let min = localTimeIfAvail("min");
+    let hr = localTimeIfAvail("hr");
+
     if (hr == 0)
     {
         if (min == 0)
@@ -76,32 +84,23 @@ function webTimer()
         } else {
             if (sec < 10)
             {
-                secText = "0" + sec;
+                sec = "0" + sec;
             }
-            return min + ":" + secText  + " seconds";
+            return min + ":" + sec  + " seconds";
         }
         
     }
     if (min < 10)
     {
-        minText = "0" + sec;
+        min = "0" + min;
     }
-    return hr + ":" + minText + ":" + secText + " seconds";
-    
 
-}
-
-function resetTimer()
-{
-    sec = 0;
-    min = 0;
-    hr = 0;
-    document.getElementById("kronos").textContent = "0 seconds";
+    return hr + ":" + min + ":" + sec + " seconds";
 }
 
 function updateTimeText()
 {
-    document.getElementById("kronos").textContent = webTimer();
+    document.getElementById("kronos").textContent = genTimeText();
 }
 
 setInterval(updateTimeText, 1000);
