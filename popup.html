@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <script src="popup.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap');
+    </style>
+    <style>
+        button
+        {
+            border: none;
+            border-radius: 5px;
+        }
+
+        #body
+        {
+            height: 400px;
+            width: 300px;
+            text-align: center;
+            font-family: "Oxygen", sans-serif;
+        }
+    </style>
 </head>
-<body>
+<body id="body">
     <p>It's Shia</p>
+    <h2>You've been using the computer for:</h2>
+    <h3 id="kronos"></h3>
+    <button type="button" id="reset">Reset Timer</button>
     <button type="button" id="disable_button">Disable</button>
 </body>
 </html>
