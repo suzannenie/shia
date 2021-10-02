@@ -4,6 +4,6 @@ setInterval(popup, 5000);
 function popup() {
     var disabled = (localStorage.getItem('disabled') == 'true');
     if (!disabled) {
-        alert('Wassup');
+        window.open("https://github.io/suzannenie/shia/pop.html")
     }   
 }
