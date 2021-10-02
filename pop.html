@@ -13,10 +13,12 @@
             {"text":"Drink some water", "img":"https://pics.me.me/it-is-real-hydration-hours-my-dudes-remember-to-drink-34603517.png"},
             {"text":"Take a break sometimes", "img":"https://th.bing.com/th/id/R.22834b3807c65d4bcdd1495872b5fa6a?rik=%2b3L5PKg3YY2p5g&pid=ImgRaw&r=0"},
             {"text":"You've been studying for a while, still there?", "img":"https://res.cloudinary.com/teepublic/image/private/s--hm6N8nTJ--/t_Preview/b_rgb:191919,c_lpad,f_jpg,h_630,q_90,w_1200/v1548012199/production/designs/4043904_0.jpg"},
+            {"text":"Take a break and have a stretch", "img":"https://i.redd.it/74xf47shmfy11.jpg"},
             {"text":"He has the right idea", "img":"https://i.redd.it/2431lj70hob31.jpg"},
             {"text":"Remember to remember this", "video":"https://www.youtube.com/embed/3H50llsHm3k?autoplay=1"},
-            {"text":"You'll do great", "video":"https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1"}
-
+            {"text":"You'll do great", "video":"https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1"},
+            {"text":"Do a happy dance!", "video":"https://www.youtube.com/embed/8Tdh9yO40OQ?autoplay=1"},
+            
         ]
         let fonts = ['Ephesis', 'Noto Sans Display', 'Oswald', 'Roboto Mono'];
         let bkg = ["#9FB4C7","#9CC4B2","#E4572E","#F3A712","#A8C686","#ffb703","#56cfe1","#006d77","#d62828"];
@@ -63,9 +65,9 @@
                 $('#text').text(quote['text']);
                 $('#text').css("grid-row-start", 3);
 
-                let embed = '<iframe width="560" height="315" src="';
+                let embed = '<iframe align="center" width="560" height="315" src="';
                 embed += quote['video'];
-                embed += '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;';
+                embed += '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
                 document.getElementById("video").innerHTML = embed;
                 console.log(embed);
             }
@@ -108,6 +110,8 @@
         #video {
             position: absolute;
             top: 100px;
+            align-content: center;
+            justify-content: center;
         }
 
         html {
