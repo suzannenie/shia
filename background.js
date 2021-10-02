@@ -1,14 +1,9 @@
-let seconds = 5;
+// pops up every 30 seconds
+setInterval(popup, 5000);
 
-setInterval(popup, seconds * 1000);
-let showEvent = new CustomEvent("show");
-
-
-function popup()
-{
-    
-
-    
-    
-    
+function popup() {
+    var disabled = (localStorage.getItem('disabled') == 'true');
+    if (!disabled) {
+        alert('Wassup');
+    }   
 }
