@@ -1,0 +1,31 @@
+body {
+    background-color: hotpink;
+    font-size: 16px;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    float: center;
+    margin: auto;
+    padding: auto;
+
+}
+
+
+#disable_button {
+background-color: #4CAF50; /* Green */
+border: 1px solid white;
+color: white;
+padding: 5px 10px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+cursor: pointer;
+}
+
+#bottom {
+float: center;
+bottom: 10px;
+left:25%;
+padding: 5px 10px;
+}

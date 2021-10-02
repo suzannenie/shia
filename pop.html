@@ -7,12 +7,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ephesis&family=Noto+Sans+Display&family=Oswald&family=Roboto+Mono:ital,wght@1,200&display=swap" rel="stylesheet">
     <script>
-        //Qoutes is a list of graphic-text pairs
+        //Quotes is a list of graphic-text pairs
         let quotes = [
-           {"text":"Call your mom", "img":"https://media.makeameme.org/created/call-your-mother-3xtdyu.jpg"},
+            {"text":"Call your mom", "img":"https://media.makeameme.org/created/call-your-mother-3xtdyu.jpg"},
             {"text":"Drink some water", "img":"https://pics.me.me/it-is-real-hydration-hours-my-dudes-remember-to-drink-34603517.png"},
             {"text":"Take a break sometimes", "img":"https://th.bing.com/th/id/R.22834b3807c65d4bcdd1495872b5fa6a?rik=%2b3L5PKg3YY2p5g&pid=ImgRaw&r=0"},
             {"text":"You've been studying for a while, still there?", "img":"https://res.cloudinary.com/teepublic/image/private/s--hm6N8nTJ--/t_Preview/b_rgb:191919,c_lpad,f_jpg,h_630,q_90,w_1200/v1548012199/production/designs/4043904_0.jpg"},
+            {"text":"He has the right idea", "img":"https://i.redd.it/2431lj70hob31.jpg"},
+            {"text":"Remember to remember this", "video":"https://www.youtube.com/embed/3H50llsHm3k?autoplay=1"},
+            {"text":"You'll do great", "video":"https://www.youtube.com/embed/ZXsQAXx_ao0?autoplay=1"}
 
         ]
         let fonts = ['Ephesis', 'Noto Sans Display', 'Oswald', 'Roboto Mono'];
@@ -48,15 +51,23 @@
         {
             let quote = getQuote();
             console.log(quote['img']);
-            if(quote['img'] == undefined)
+            if(quote['img'] == undefined & quote['video'] == undefined)
             {
                 $('#text').text(quote['text']);
                 $('#text').css("grid-row-start", 1);
-            } else {
+            } else if(quote['video'] == undefined) {
                 $('#meme').attr('src',quote['img']);
                 $('#text').text(quote['text']);
                 $('#text').css("grid-row-start", 3);
-            
+            } else {
+                $('#text').text(quote['text']);
+                $('#text').css("grid-row-start", 3);
+
+                let embed = '<iframe width="560" height="315" src="';
+                embed += quote['video'];
+                embed += '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>;';
+                document.getElementById("video").innerHTML = embed;
+                console.log(embed);
             }
             $('#text').css("font-family",getFont());
             $('body').css("background-color",getBgndColor());
@@ -94,6 +105,11 @@
             margin: auto;
         }
 
+        #video {
+            position: absolute;
+            top: 100px;
+        }
+
         html {
             margin: 0;
             padding: 0;
@@ -122,10 +138,10 @@
 <body>
     <div id="pop">
         <img id="meme">
+        <div id="video"></div>
         <h2 id="text"></h2>
     </div>
 
-    
     
 </body>
 </html>
