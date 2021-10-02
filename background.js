@@ -8,6 +8,24 @@ function popup() {
     }   
 }
 
+async function createNotif(q)
+{
+    if (Notification.permission === 'granted')
+    {
+        let notif = new Notification(
+            q['text'],
+            {
+            'icon':q['image']
+            }
+        );
+
+        setTimeout(() => notif.close(), 3 * 1000); //3 Seconds
+    } else {
+        let perms = await Notification.requestPermission();
+    }
+    
+}
+
 function localTimeIfAvail(name)
 {
     if (localStorage.getItem(name) != null)
