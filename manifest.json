@@ -1,0 +1,20 @@
+{
+  "name": "Shia",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "justdoitshia.png"
+  },
+  "icons": {
+    "16": "justdoitshia.png",
+    "48": "justdoitshia.png",
+    "128": "justdoitshia.png"
+  },
+  "background": {
+        "scripts": [
+          "background.js"
+        ],
+        "persistent": false
+    }
+}
